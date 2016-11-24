@@ -1,0 +1,163 @@
+AN IMPORTANT THING TO UNDERSTAND:
+LOGISTIC REGRESSION IS DOING BETTER IN THIS CASE BECAUSE WE TUNED IT AND MADE IT MORE
+BIASED TOWARDS CLASSIFYING AS MALIGNANT FOR REAL WORLD SITUATIONS
+BETTER PEOPLE SPEND MONEY RATHER THAN DIE FROM THINKING THEIR TUMOR IS BENIGN
+BUT CUS OF THAT, LOGISTIC BENIGN MISCLASSIFICATION IS MAD
+USE KNN, IT'S UNBIASED AND HAS BRILLIANT OVERALL CLASSIFICATION RATES
+
+
+KNN: 
+====
+
+Benign misclassifications (what is B but got labled as M): 
+--------------------------------------------------------------
+0/34, 6/37, 3/32, 3/39, 3/35, 1/36, 1/34, 1/33, 2/32, 2/37, 
+10/35, 0/30, 6/34, 0/30, 4/32, 6/39, 6/32, 6/43, 1/37, 1/38, 
+5/35, 2/38, 8/35, 1/31, 4/32, 5/38, 4/38, 5/38, 8/31, 6/38, 
+4/39, 5/37, 5/37, 0/38, 6/36, 4/33, 3/32, 5/37, 7/37, 1/35, 
+1/33, 1/38, 1/38, 3/36, 2/39, 0/38, 2/36, 0/34, 6/35, 6/36
+
+Average Benign Missclassification Rate: 172 / 1777 = 9.6792%
+Average Benign Classification Rate: 90.3207%
+
+Malignant misclassifications (what is M but got labled as B): 
+--------------------------------------------------------------
+0/23, 1/20, 1/25, 0/18, 0/22, 1/21, 2/23, 1/24, 1/25, 0/20, 
+1/22, 1/27, 0/23, 4/27, 1/25, 0/18, 0/25, 0/14, 1/20, 1/19, 
+1/22, 2/19, 0/22, 2/26, 1/25, 0/19, 0/19, 2/19, 0/26, 0/19,
+0/18, 1/20, 0/20, 1/19, 0/21, 2/24, 1/25, 0/20, 2/20, 1/22, 
+1/24, 0/19, 1/19, 1/21, 1/18, 0/19, 2/19, 2/23, 0/22, 0/21
+
+
+Average Benign Missclassification Rate: 172 / 1777    = 9.6792%
+Average Benign Classification Rate:                   = 90.3207%
+Average Malignant Misclassification Rate: 40/ 1051    = 3.8058%
+Average Malignant Classification Rate:                = 96.1942%
+
+Overall Misclassification rate: 172+40 / 1777+1051    = 7.4964%
+
+
+
+Non reduced logistic regression classifier
+==============================================
+
+- Benign missclassification (What is B but labled as M)
+--------------------------------------------------------
+1/34, 8/37, 3/32, 5/39, 6/35, 4/36, 4/34, 0/33, 3/32, 2/37, 
+
+14/35, 0/30, 18/34, 0/30, 5/32, 12/39, 8/32, 13/43, 4/37, 5/38,
+
+11/35, 6/38, 14/35, 2/31, 8/32, 5/38, 9/38, 6/38, 12/31, 14/38, 
+
+10/39, 10/37, 8/37, 0/38, 17/36, 6/33, 3/32, 10/37, 9/37, 0/35, 
+
+4/33, 5/38, 4/38, 8/36, 5/39, 1/38, 3/36, 9/34, 8/35, 9/36
+
+
+- Malignant missclassification (What is M but labled as B)
+-------------------------------------------------------------
+0/23, 1/20, 2/25, 0/18, 0/22, 1/21, 1/23, 1/24, 1/25, 0/20, 
+
+0/22, 2/27, 0/23, 2/27, 1/25, 0/18, 0/25, 0/14, 0/20, 2/19, 
+
+0/22, 2/19, 0/22, 2/26, 1/25, 0/19, 0/19, 0/19, 0/26, 0/19, 
+
+0/18, 1/20, 0/20, 1/19, 0/21, 2/24, 0/25, 0/20, 0/20, 1/22,
+
+0/24, 0/19, 1/19, 0/21, 0/18, 0/19, 2/21, 0/23, 0/22, 0/21
+
+
+
+Average Benign Missclassification Rate: 331 / 1777     = 18.6268%
+Average Benign Classification Rate:                    = 81.3732%
+Average Malignant Misclassification Rate: 27 / 1051    = 2.5681%
+Average Malignant Classification Rate:                 = 97.4319%
+
+
+Overall Misclassification rate: 331+27 / 1777+1051    = 12.6591%
+
+
+
+
+Corelation reduced logistic regression classifier
+====================================================
+
+- Benign missclassification (What is B but labled as M)
+--------------------------------------------------------
+1/34, 16/37, 4/32, 10/39, 5/35, 5/36, 2/34, 0/33, 4/32, 2/37,
+
+14/35, 0/30, 16/34, 0/30, 6/32, 18/39, 9/32, 19/43, 10/37, 11/38,
+
+12/35, 6/38, 12/35, 1/31, 7/32, 12/38, 9/38, 12/38, 14/31, 19/38,
+
+13/39, 8/37, 6/37, 0/38, 16/36, 6/33, 1/32, 15/37, 13/37, 1/35, 
+
+5/33, 10/38, 9/38, 11/36, 4/39, 1/38, 2/36, 12/34, 11/35, 12/36
+
+
+- Malignant missclassification (What is M but labled as B)
+-----------------------------------------------------------
+1/23, 1/20, 2/25, 1/18, 1/22, 1/21, 1/23, 2/24, 1/25, 0/20,
+
+0/22, 0/27, 0/23, 3/27, 1/25, 0/18, 0/25, 0/14, 0/20, 0/19,
+
+0/22, 2/19, 0/22, 2/26, 2/25, 0/19, 0/19, 0/19, 0/26, 0/19,
+
+0/18, 2/20, 0/20, 1/19, 0/21, 2/24, 1/25, 0/20, 0/20, 1/22,
+
+0/24, 1/19, 0/19, 0/21, 0/18, 0/19, 1/21, 0/23, 0/22, 0/21
+
+
+
+Average Benign Missclassification Rate:  412 /1777     = 23.1851%
+Average Benign Classification Rate:                    = 76.8148%
+Average Malignant Misclassification Rate: 28 /1051     = 2.6641%
+Average Malignant Classification Rate:                 = 97.3359%  
+
+
+Overall Misclassification rate: 412+28 / 1777+1051    = 15.5586%
+
+
+
+
+
+PCA Reduced Logistic Regression
+================================
+
+- Benign missclassification (What is B but labled as M)
+--------------------------------------------------------
+
+28/34, 3/37, 1/32, 3/39, 4/35, 1/36, 0/34, 0/33, 1/32, 5/37,
+
+3/35, 0/30, 2/34, 0/30, 5/32, 29/39, 2/32, 28/43, 7/37, 2/38,
+
+3/35, 3/38, 3/35, 0/31, 2/32, 4/38, 3/38, 31/38, 6/31, 5/38,
+
+6/39, 29/37, 4/37, 0/38, 5/36, 3/33, 0/32, 4/37, 5/37, 1/35,
+
+2/33, 5/38, 2/38, 7/36, 4/39, 1/38, 3/36, 2/34, 2/35, 3/36
+
+
+- Malignant missclassification (What is M but labled as B)
+------------------------------------------------------------
+
+20/23, 4/20, 2/25, 2/18, 1/22, 1/21, 3/23, 1/24, 3/25, 2/20,
+
+2/22, 3/27, 3/23, 4/27, 6/25, 18/18, 4/25, 12/14, 4/20, 1/19,
+
+2/22, 2/19, 2/22, 3/26, 5/25, 2/19, 1/19, 18/19, 3/26, 1/19,
+
+0/18, 17/20, 1/20, 0/19, 2/21, 3/24, 1/25, 2/20, 2/20, 2/22,
+
+4/24, 2/19, 2/19, 4/21, 0/18, 0/19, 2/21, 1/23, 1/22, 1/21
+
+
+Average Benign Missclassification Rate: 272/1777          =  15.3066%
+Average Benign Classification Rate:                       =  84.6934%
+Average Malignant Misclassification Rate: 182/1051        =  17.3168%
+Average Malignant Classification Rate:                    =  82.6831%
+
+Overall Misclassification rate: 272+182 / 1777+1051    = 16.0537%
+
+
+
