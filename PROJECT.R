@@ -178,6 +178,22 @@ knn_classification <- function(compare_mode, ...) {
   CrossTable(x=original_labels$diagnosis, y=knn_pred, prop.chisq=FALSE)
 }
 
+################# KMEANS CLUSTERING CLASSIFIER ################
+
+kmc_classification <- function(compare_mode, ...) {
+  if(!compare_mode) {
+    print('Not in comparision mode, creating new sets ...')
+    train_data <<- NULL
+    test_data <<- NULL
+    original_labels <<- NULL
+    train_data_normalized <<- NULL
+    test_data_normalized <<- NULL
+    preprocess()
+  }
+  kmc_pred = kmeans(train_data_normalized[,3:11], 2, nstart=10)
+  CrossTable(x=train_data_normalized$diagnosis, y=kmc_pred$cluster, prop.chisq=FALSE)
+}
+
 ################### COMPARE CLASSIFIERS ########################
 
 compare_classifiers <- function() {
@@ -190,6 +206,8 @@ compare_classifiers <- function() {
   preprocess()
   print('     KNN CLASSIFIER:   ')
   knn_classification(1)
+  print('     KMEANSCLUSTERING CLASSIFIER:   ')
+  kmc_classification(1)
   print('     NON REDUCED LOGISTIC REGRESSION CLASSIFIER:   ')
   non_reduced_logistic_regressed_classification(1)
   print('     CORRELATION REDUCED LOGISTIC REGRESSION CLASSIFIER:   ')
@@ -205,6 +223,8 @@ compare_classifiers <- function() {
 
 #function to call knn classifier with randomly picked test and train set, compare param=0
 knn_classification(0) 
+#function to call kmc classifier with randomly picked test and train set, compare param=0
+kmc_classification(0) 
 #function to execute logit regressed classification on a randomly picked test and train set
 #compare param=0
 non_reduced_logistic_regressed_classification(0)
